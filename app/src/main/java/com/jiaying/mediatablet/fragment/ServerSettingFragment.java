@@ -3,6 +3,7 @@ package com.jiaying.mediatablet.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 
 import com.jiaying.mediatablet.R;
 import com.jiaying.mediatablet.activity.MainActivity;
+import com.jiaying.mediatablet.constants.Constants;
 import com.jiaying.mediatablet.db.DataPreference;
 
 import com.jiaying.mediatablet.entity.DeviceEntity;
@@ -39,6 +41,8 @@ public class ServerSettingFragment extends Fragment {
     EditText et_dev_serverap;
 
     EditText et_dev_serverorg;
+
+    EditText et_welcome_content;
 
     //服务器相关配置
     EditText log_server_ip, log_server_port;
@@ -103,9 +107,18 @@ public class ServerSettingFragment extends Fragment {
         et_dev_serverorg = (EditText) view.findViewById(R.id.et_dev_serverorg);
         et_dev_serverorg.setText(DeviceEntity.getInstance().getServerOrg());
 
+
+        DataPreference dataPreference = new DataPreference(getActivity());
+        et_welcome_content = (EditText) view.findViewById(R.id.et_welcome_content);
+        //欢迎介绍
+        String welcomeContent =  dataPreference.readStr("welcome_info");
+        if(TextUtils.equals(welcomeContent,"wrong")){
+            et_welcome_content.setText(R.string.fragment_collect_content);
+        }else{
+            et_welcome_content.setText(welcomeContent);
+        }
         //要连接的蓝牙名称
         et_bluetooth_name = (EditText) view.findViewById(R.id.et_bluetooth_name);
-        DataPreference dataPreference = new DataPreference(getActivity());
         String bluetoothName = dataPreference.readStr("bluetooth_name");
         et_bluetooth_name.setText(bluetoothName);
 
@@ -129,8 +142,13 @@ public class ServerSettingFragment extends Fragment {
                 try {
                     //保存相关参数到本地
 
-                    //蓝牙名称
+                    //
                     DataPreference dataPreference = new DataPreference(getActivity());
+                    //采集介绍语言
+                    dataPreference.writeStr("welcome_info", et_welcome_content.getText().toString());
+                    dataPreference.commit();
+                    //蓝牙名称
+
                     dataPreference.writeStr("bluetooth_name", et_bluetooth_name.getText().toString());
                     dataPreference.commit();
 
