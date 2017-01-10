@@ -68,7 +68,7 @@ public class HorizontalProgressBar extends ProgressBar {
     }
 
     private void setText(int progress){
-        text = "血液连接你我！";
+        text = "";
     }
 
 }

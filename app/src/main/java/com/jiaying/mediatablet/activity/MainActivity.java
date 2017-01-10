@@ -123,6 +123,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private ProgressDialog mDialog = null;
     private TextView time_txt;//当前时间
     private HorizontalProgressBar collect_pb;//采集进度
+    private TextView collect_txt;//采集进度上面的滚动文字
     private View dlg_call_service_view;//电话服务view
     private ProgressDialog allocDevDialog = null;
 
@@ -860,6 +861,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         collect_pb = (HorizontalProgressBar) findViewById(R.id.collect_pb);
         collect_pb.setProgress(0);
 
+        //进度上面的滚动文字提示
+        collect_txt = (TextView) findViewById(R.id.collect_txt);
+        DataPreference dataPreference = new DataPreference(this);
+        String welcomeContent = dataPreference.readStr("welcome_info");
+        if (TextUtils.equals(welcomeContent, "wrong")) {
+            welcomeContent = getString(R.string.blood_connects_you_and_me);
+        }
+        collect_txt.setText(welcomeContent);
         //标题栏内部右侧的北京时间
         time_txt = (TextView) findViewById(R.id.time_txt);
 

@@ -113,7 +113,7 @@ public class ServerSettingFragment extends Fragment {
         //欢迎介绍
         String welcomeContent =  dataPreference.readStr("welcome_info");
         if(TextUtils.equals(welcomeContent,"wrong")){
-            et_welcome_content.setText(R.string.fragment_collect_content);
+            et_welcome_content.setText(R.string.blood_connects_you_and_me);
         }else{
             et_welcome_content.setText(welcomeContent);
         }

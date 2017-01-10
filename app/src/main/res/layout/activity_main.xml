@@ -134,14 +134,34 @@
                     android:orientation="horizontal"
                     android:visibility="invisible">
 
-                    <com.jiaying.mediatablet.widget.HorizontalProgressBar
-                        android:id="@+id/collect_pb"
-                        style="@style/progress_v_plams"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:max="600"
-                        android:padding="@dimen/line_width"
-                        android:progress="20" />
+                        android:layout_height="match_parent">
+
+                        <com.jiaying.mediatablet.widget.HorizontalProgressBar
+                            android:id="@+id/collect_pb"
+                            style="@style/progress_v_plams"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="600"
+                            android:padding="@dimen/line_width"
+                            android:progress="20" />
+
+                        <TextView
+                            android:id="@+id/collect_txt"
+                            style="@style/txt_blue_big_style"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text="@string/blood_connects_you_and_me" />
+                    </FrameLayout>
+
                 </LinearLayout>
 
 

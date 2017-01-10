@@ -3,7 +3,6 @@ package com.jiaying.mediatablet.fragment.collection;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SynthesizerListener;
 import com.jiaying.mediatablet.R;
 import com.jiaying.mediatablet.activity.MainActivity;
-import com.jiaying.mediatablet.db.DataPreference;
 import com.jiaying.mediatablet.fragment.BaseFragment;
 import com.jiaying.mediatablet.net.signal.RecSignal;
 
@@ -24,8 +22,6 @@ import com.jiaying.mediatablet.net.signal.RecSignal;
  */
 public class CollectionFragment extends BaseFragment {
     public String TAG = "CollectionFragment";
-    //采集提示语，可以在设置界面去配置
-    private String welcomeContent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,14 +34,7 @@ public class CollectionFragment extends BaseFragment {
 
         View fragment_collection_view = inflater.inflate(R.layout.fragment_collection, null);
         TextView content_txt = (TextView) fragment_collection_view.findViewById(R.id.content_txt);
-
-        DataPreference dataPreference = new DataPreference(getActivity());
-        welcomeContent = dataPreference.readStr("welcome_info");
-        if (TextUtils.equals(welcomeContent, "wrong")) {
-            welcomeContent = getString(R.string.fragment_collect_content);
-        }
-        content_txt.setText(welcomeContent);
-        SpannableString ss = new SpannableString(welcomeContent);
+        SpannableString ss = new SpannableString(getString(R.string.fragment_collect_content));
         ss.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.orange)), 4, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         content_txt.setText(ss);
         return fragment_collection_view;
@@ -57,7 +46,7 @@ public class CollectionFragment extends BaseFragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int code = startSpeech(welcomeContent, mTtsListener);
+                int code = startSpeech(getString(R.string.fragment_collect_content), mTtsListener);
                 Log.e(TAG, "CODE IS " + code + " " + mTtsListener.toString().hashCode());
 //                延时发送播放视频信号~
                 try {
