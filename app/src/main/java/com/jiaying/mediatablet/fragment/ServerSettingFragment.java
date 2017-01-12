@@ -22,6 +22,7 @@ import com.jiaying.mediatablet.net.serveraddress.SignalServer;
 import com.jiaying.mediatablet.net.serveraddress.VideoServer;
 import com.jiaying.mediatablet.net.signal.RecSignal;
 import com.jiaying.mediatablet.thread.CheckUpdateTask;
+import com.jiaying.mediatablet.utils.CheckHelper;
 import com.jiaying.mediatablet.utils.ToastUtils;
 
 /*
@@ -111,10 +112,10 @@ public class ServerSettingFragment extends Fragment {
         DataPreference dataPreference = new DataPreference(getActivity());
         et_welcome_content = (EditText) view.findViewById(R.id.et_welcome_content);
         //欢迎介绍
-        String welcomeContent =  dataPreference.readStr("welcome_info");
-        if(TextUtils.equals(welcomeContent,"wrong")){
+        String welcomeContent = dataPreference.readStr("welcome_info");
+        if (TextUtils.equals(welcomeContent, "wrong")) {
             et_welcome_content.setText(R.string.blood_connects_you_and_me);
-        }else{
+        } else {
             et_welcome_content.setText(welcomeContent);
         }
         //要连接的蓝牙名称
@@ -140,6 +141,67 @@ public class ServerSettingFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
+                    //第一步  判断各项输入是否合法 第二步 保存各项的值得
+
+
+//                    1.消息服务器
+                    String signal_server_ip_val = signal_server_ip.getText().toString().trim();
+                    if (!CheckHelper.isIPAddress(signal_server_ip_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_message_server_ip_address);
+                        return;
+                    }
+                    String signal_server_port_val = signal_server_port.getText().toString();
+                    if (!CheckHelper.isPort(signal_server_port_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_message_server_ip_port);
+                        return;
+                    }
+
+                    //2.视频服务器
+                    String video_server_ip_val = video_server_ip.getText().toString().trim();
+                    if (!CheckHelper.isIPAddress(video_server_ip_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_video_server_ip_address);
+                        return;
+                    }
+                    String video_server_port_val = video_server_port.getText().toString().trim();
+                    if (!CheckHelper.isPort(video_server_port_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_video_server_ip_port);
+                        return;
+                    }
+                    //日志服务器
+                    String log_server_ip_val = log_server_ip.getText().toString().trim();
+                    if (!CheckHelper.isIPAddress(log_server_ip_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_log_server_ip_address);
+                        return;
+                    }
+                    String log_server_port_val = log_server_port.getText().toString().trim();
+                    if (!CheckHelper.isPort(log_server_port_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_log_server_ip_port);
+                        return;
+                    }
+
+                    //蓝牙名称
+                    String et_bluetooth_name_val = et_bluetooth_name.getText().toString().trim();
+                    if (!CheckHelper.isBlueToothName(et_bluetooth_name_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_blue_tooth_name);
+                        return;
+                    }
+                    //人脸识别率
+                    String et_face_pass_rate_val = et_face_pass_rate.getText().toString().trim();
+                    if (!CheckHelper.isNumeric(et_face_pass_rate_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_face_rate);
+                        return;
+                    }
+                    String et_face_send_num_val = et_face_send_num.getText().toString().trim();
+                    if (!CheckHelper.isFaceUploadSize(et_face_pass_rate_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_face_upload_pic_size);
+                        return;
+                    }
+
+                    String et_welcome_content_val = et_welcome_content.getText().toString().trim();
+                    if (TextUtils.isEmpty(et_welcome_content_val)) {
+                        ToastUtils.showToast(getActivity(), R.string.input_collection_welcome_content);
+                        return;
+                    }
                     //保存相关参数到本地
 
                     //

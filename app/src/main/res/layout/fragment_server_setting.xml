@@ -44,11 +44,7 @@
 
                         <EditText
                             android:id="@+id/signal_server_ip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_address_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -70,13 +66,7 @@
 
                         <EditText
                             android:id="@+id/signal_server_port"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:digits="0123456789"
-                            android:inputType="number"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_port_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -97,11 +87,7 @@
 
                         <EditText
                             android:id="@+id/video_server_ip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_address_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -122,14 +108,7 @@
 
                         <EditText
                             android:id="@+id/video_server_port"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:digits="0123456789"
-                            android:inputType="number"
-                            android:maxLength="5"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_port_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -150,11 +129,7 @@
 
                         <EditText
                             android:id="@+id/log_server_ip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_address_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -175,13 +150,7 @@
 
                         <EditText
                             android:id="@+id/log_server_port"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/btn_padding"
-                            android:background="@drawable/edit_grey_bg"
-                            android:digits="0123456789"
-                            android:inputType="number"
-                            android:minWidth="@dimen/server_setting_edit_min_width" />
+                            style="@style/edit_ip_port_style" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -201,6 +170,7 @@
                             android:textSize="@dimen/text_size_midle" />
 
                         <EditText
+                            android:singleLine="true"
                             android:id="@+id/et_bluetooth_name"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -226,6 +196,7 @@
                             android:textSize="@dimen/text_size_midle" />
 
                         <EditText
+                            android:singleLine="true"
                             android:id="@+id/et_face_pass_rate"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -254,6 +225,7 @@
                             android:textSize="@dimen/text_size_midle" />
 
                         <EditText
+                            android:singleLine="true"
                             android:id="@+id/et_face_send_num"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -425,8 +397,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/btn_padding"
                     android:background="@drawable/edit_grey_bg"
-                    android:padding="@dimen/btn_inner_padding"
-                    />
+                    android:padding="@dimen/btn_inner_padding" />
             </LinearLayout>
 
             <Button

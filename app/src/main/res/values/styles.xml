@@ -188,6 +188,27 @@
         <item name="android:background">@color/main_color</item>
     </style>
 
+
+    <style name="edit_ip_address_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:digits">"0123456789."</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/btn_padding</item>
+        <item name="android:background">@drawable/edit_grey_bg</item>
+        <item name="android:minWidth">@dimen/server_setting_edit_min_width</item>
+    </style>
+    <style name="edit_ip_port_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:digits">"0123456789"</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">5</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/btn_padding</item>
+        <item name="android:background">@drawable/edit_grey_bg</item>
+        <item name="android:minWidth">@dimen/server_setting_edit_min_width</item>
+    </style>
     <style name="popwin_anim_style">
         <item name="android:windowEnterAnimation">@anim/pop_enter</item>
         <item name="android:windowExitAnimation">@anim/pop_out</item>
