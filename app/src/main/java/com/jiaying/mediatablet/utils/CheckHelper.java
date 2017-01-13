@@ -63,38 +63,36 @@ public class CheckHelper {
     }
 
     /**
-     * 该正则表达式可以匹配所有的数字 包括负数
+     * 是否为正确的人脸通过识别率
      *
      * @param string
      * @return
      */
-    public static boolean isNumeric(String string) {
-        Pattern pattern = Pattern.compile("-?[0-9]+\\.?[0-9]+");
-        String bigStr;
+    public static boolean isFaceRate(String string) {
         try {
-            bigStr = new BigDecimal(string).toString();
+            float val = Float.parseFloat(string);
+            if (val >= 0.1 && val <= 0.9) {
+                return true;
+            }
         } catch (Exception e) {
-            return false;//异常 说明包含非数字。
+
         }
-        Matcher isNum = pattern.matcher(bigStr); // matcher是全匹配
-        if (!isNum.matches()) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     /**
      * 人脸上传照片的张数
+     *
      * @param size
      * @return
      */
     public static boolean isFaceUploadSize(String size) {
         try {
             int sizeVal = Integer.parseInt(size);
-            if (sizeVal > 0 && sizeVal < 20) {
+            if (sizeVal > 0 && sizeVal < 10) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return false;

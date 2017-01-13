@@ -88,8 +88,8 @@
     <string name="input_video_server_ip_port">请输入正确的视频服务器端口</string>
     <string name="input_log_server_ip_address">请输入正确的日志服务器IP</string>
     <string name="input_log_server_ip_port">请输入正确的日志服务器端口</string>
-    <string name="input_blue_tooth_name">请输入正确的蓝牙名称</string>
-    <string name="input_face_rate">请输入正确的人脸失败率</string>
-    <string name="input_face_upload_pic_size">请输入正确的人脸图片上传张数</string>
+    <string name="input_blue_tooth_name">请输入正确的蓝牙名称,必须以JY开头</string>
+    <string name="input_face_rate">请输入正确的人脸识别率(0.1至0.9)</string>
+    <string name="input_face_upload_pic_size">请输入正确的人脸图片上传张数(1至9)</string>
     <string name="input_collection_welcome_content">请输入采集提示语</string>
 </resources>

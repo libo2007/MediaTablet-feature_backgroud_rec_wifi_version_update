@@ -126,12 +126,18 @@ public class ServerSettingFragment extends Fragment {
         //人脸识别率
         et_face_pass_rate = (EditText) view.findViewById(R.id.et_face_pass_rate);
         float face_rate = dataPreference.readFloat("face_rate");
+        if(face_rate==-0.1f){
+            face_rate = Constants.FACE_RATE;
+        }
         et_face_pass_rate.setText(face_rate + "");
 
 
         //人脸照片上传数字
         et_face_send_num = (EditText) view.findViewById(R.id.et_face_send_num);
         int face_send_num = dataPreference.readInt("face_send_num");
+        if(face_send_num==-1){
+            face_send_num=Constants.FACE_SEND_NUM;
+        }
         et_face_send_num.setText(face_send_num + "");
 
 
@@ -187,12 +193,12 @@ public class ServerSettingFragment extends Fragment {
                     }
                     //人脸识别率
                     String et_face_pass_rate_val = et_face_pass_rate.getText().toString().trim();
-                    if (!CheckHelper.isNumeric(et_face_pass_rate_val)) {
+                    if (!CheckHelper.isFaceRate(et_face_pass_rate_val)) {
                         ToastUtils.showToast(getActivity(), R.string.input_face_rate);
                         return;
                     }
                     String et_face_send_num_val = et_face_send_num.getText().toString().trim();
-                    if (!CheckHelper.isFaceUploadSize(et_face_pass_rate_val)) {
+                    if (!CheckHelper.isFaceUploadSize(et_face_send_num_val)) {
                         ToastUtils.showToast(getActivity(), R.string.input_face_upload_pic_size);
                         return;
                     }

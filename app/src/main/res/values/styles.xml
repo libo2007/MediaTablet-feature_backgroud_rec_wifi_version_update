@@ -193,6 +193,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:digits">"0123456789."</item>
+        <item name="android:maxLength">30</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/btn_padding</item>
         <item name="android:background">@drawable/edit_grey_bg</item>
